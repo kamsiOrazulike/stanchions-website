@@ -17,7 +17,7 @@ const ClientMarquee: React.FC<ClientMarqueeProps> = ({ clients }) => {
   return (
     <div className="relative w-full overflow-hidden bg-transparent">
       {/* Main marquee container */}
-      <div className="inline-flex w-full bg-white p-4 rounded-md">
+      <div className="inline-flex w-full p-4 rounded-md">
         {/* First moving div */}
         <div
           className="animate-marquee inline-flex items-center"
@@ -40,7 +40,7 @@ const ClientMarquee: React.FC<ClientMarqueeProps> = ({ clients }) => {
                     objectFit: "contain",
                   }}
                   draggable="false"
-                  className="grayscale-[0] opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  className="grayscale-[0] rounded-md opacity-70 hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
             </div>

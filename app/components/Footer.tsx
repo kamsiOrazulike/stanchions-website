@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, Mail, MapPin, Shield, Users, Check } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,24 +22,6 @@ const Footer = () => {
     { name: "Road & Civil Construction", href: "/services#civil" },
     { name: "Procurement", href: "/services#procurement" },
     { name: "Logistics", href: "/services#logistics" },
-  ];
-
-  const companyValues = [
-    {
-      icon: Shield,
-      title: "Quality Assurance",
-      description: "Services that exceed expectations",
-    },
-    {
-      icon: Users,
-      title: "Local Content Leadership",
-      description: "Indigenous expertise in oil & gas sector",
-    },
-    {
-      icon: Check,
-      title: "Zero LTI Philosophy",
-      description: "Prioritizing health, safety & environment",
-    },
   ];
 
   return (
@@ -138,30 +120,11 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
-          {/* Company Values */}
-          <div className="mt-16 pt-12 border-t border-gray-700">
-            <h3 className="text-lg font-semibold text-white mb-8 text-center">
-              OUR VALUES
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {companyValues.map((value) => (
-                <div
-                  key={value.title}
-                  className="flex flex-col items-center text-center bg-[#373435] p-6 rounded-lg"
-                >
-                  <value.icon className="w-8 h-8 text-red-600 mb-4" />
-                  <h4 className="text-white font-medium mb-2">{value.title}</h4>
-                  <p className="text-gray-300 text-xs">{value.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
 
         {/* Copyright Section */}
-        <div className="border-t border-gray-700 py-6">
-          <p className="text-center text-gray-400 text-sm">
+        <div className="py-6">
+          <p className="text-center font-light text-gray-400 text-xs">
             Copyright © {currentYear} Stanchions | All Rights Reserved.
           </p>
         </div>
