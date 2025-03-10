@@ -56,9 +56,9 @@ export default function About() {
                 About Stanchions
               </h1>
               <p className="text-md md:text-lg">
-                Stanchions Nigeria is one of the fastest Local Content Company,
-                providing World Class Engineering & Support Services in the Oil
-                and Gas sector of Nigeria since 1997.
+                Stanchions Nigeria is one of the fastest growing Constructions
+                and Fabrications Company, focused on providing World Class
+                Engineering & Support Services.
               </p>
             </div>
           </div>

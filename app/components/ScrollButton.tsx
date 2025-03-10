@@ -28,7 +28,7 @@ export default function ScrollButton() {
   return (
     <a
       onClick={scrollToPosition}
-      className="fixed bottom-8 right-8 z-50 flex text-white items-center bg-[#000]/50 border border-[#000]/40 hover:bg-black p-4 transition-all duration-300 rounded-full mb-4 uppercase text-xs"
+      className="fixed bottom-8 right-8 z-50 flex text-white items-center bg-[#FF0000]/50 border border-[#FF0000]/40 hover:bg-red-500 p-4 transition-all duration-300 rounded-full mb-4 uppercase text-xs"
     >
       {hasScrolled ? (
         <>
