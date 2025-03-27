@@ -43,9 +43,9 @@ const Hero = () => {
           muted
           loop
           playsInline
-          poster="/static/imgs/video-poster.jpg" // Optional: Add a poster image
+          poster="/media/video-poster.jpg" // Optional: Add a poster image
         >
-          <source src="/media/background_video.mp4" type="video/mp4" />
+          <source src="/media/background_video.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
 

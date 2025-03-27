@@ -4,20 +4,20 @@ import Link from "next/link";
 import Image from "next/image";
 import ServiceCarousel from "./components/Carousel";
 import ClientMarquee from "./components/Marquee";
-import HeroCarousel from "./components/HeroCarousel";
 import ScrollButton from "./components/ScrollButton";
 import AnimatedCounter from "./components/AnimatedCount";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ChevronDown } from "lucide-react";
 
 export default function Home() {
-  const aboutSectionRef = useRef(null);
-  const metricsSectionRef = useRef(null);
-  const servicesSectionRef = useRef(null);
-  const clientsSectionRef = useRef(null);
-  const visionMissionRef = useRef(null);
-  const qhseSectionRef = useRef(null);
+  const aboutSectionRef = useRef<HTMLDivElement>(null);
+  const metricsSectionRef = useRef<HTMLDivElement>(null);
+  const servicesSectionRef = useRef<HTMLDivElement>(null);
+  const clientsSectionRef = useRef<HTMLDivElement>(null);
+  const visionMissionRef = useRef<HTMLDivElement>(null);
+  const qhseSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -31,7 +31,7 @@ export default function Home() {
           y: 0,
           duration: 1,
           ease: "power3.out",
-          delay: 0.3, 
+          delay: 0.3,
         }
       );
 
@@ -173,42 +173,42 @@ export default function Home() {
       description:
         "We construct, repair and deliver pipelines that transport oil, natural gas, petroleum products, slurry, water, and industrial gases for government and private customers.",
       isNew: false,
-      imageSrc: "/static/imgs/pipeline-construction.jpg",
+      imageSrc: "/media/pipeline-construction.jpg",
     },
     {
       name: "Mechanical & Electrical Installations",
       description:
         "We provide electrical and mechanical solutions for industrial and commercial clients with our experienced and multi-skilled team of engineers.",
       isNew: false,
-      imageSrc: "/static/imgs/mechanical-electrical.jpg",
+      imageSrc: "/media/mechanical-electrical.jpg",
     },
     {
       name: "Location Preparation",
       description:
         "We prepare land and swamp sites for rig operations, ensuring that they are adequately ready to achieve the required results.",
       isNew: false,
-      imageSrc: "/static/imgs/location-prep.jpg",
+      imageSrc: "/media/location-prep.jpg",
     },
     {
       name: "Road & Civil Construction",
       description:
         "With our industrial background and proven technical capacity, we contribute to the success of large-scale road project operations.",
       isNew: false,
-      imageSrc: "/static/imgs/road-construction.jpg",
+      imageSrc: "/media/road-construction.jpg",
     },
     {
       name: "Procurement",
       description:
         "Our procurement strategy is based on experience and long-term relationships with in-depth understanding of both local and international markets.",
       isNew: false,
-      imageSrc: "/static/imgs/procurement.jpg",
+      imageSrc: "/media/procurement.jpg",
     },
     {
       name: "Logistics",
       description:
         "We own and operate our own vehicles, forklifts, cranes and other equipment ensuring supplies and materials are adequately handled and delivered.",
       isNew: false,
-      imageSrc: "/static/imgs/logistics.jpg",
+      imageSrc: "/media/logistics.jpg",
     },
   ];
 
@@ -220,7 +220,6 @@ export default function Home() {
     { name: "Eni", logo: "/static/clients/eni.svg" },
     { name: "Nigeria LNG Limited", logo: "/static/clients/lng_ltd.webp" },
     { name: "NNPC", logo: "/static/clients/nnpc.png" },
-    // { name: "Zakhem Baywood", logo: "/static/clients/zakhem.png" },
     { name: "Elcrest", logo: "/static/clients/elcrest.webp" },
     { name: "Walter Smith", logo: "/static/clients/wsmith.jpg" },
     { name: "Amazon Energy", logo: "/static/clients/amazon-energy.png" },
@@ -228,10 +227,69 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-[#373435]">
-      {/* Hero Section */}
-      <div className="hero-content">
-        <HeroCarousel />
-      </div>
+      {/* Hero Section with Video Background */}
+      <section className="relative h-screen w-full overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 w-full h-full z-0">
+            <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            disablePictureInPicture
+            controlsList="nodownload nofullscreen noremoteplayback"
+            className="w-full h-full object-cover"
+            >
+            <source src="/media/background_video.webm" type="video/webm" />
+            </video>
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4 hero-content mt-24">
+          <Image
+            src="/logo2.svg"
+            alt="Stanchions Logo"
+            width={180}
+            height={100}
+            priority
+            draggable={false}
+            className="mb-12"
+          />
+          <p className="text-md md:text-xl max-w-2xl mx-auto mb-4">
+            Excellence in Construction & Fabrication Support Services in Nigeria
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/about-us"
+              className="text-sm bg-red-600 text-white px-8 py-3 rounded-none hover:bg-red-700 transition-all duration-300"
+            >
+              Learn More
+            </Link>
+            <Link
+              href="/contact"
+              className="text-sm border border-white text-white px-8 py-3 rounded-none hover:bg-white hover:text-[#373435] transition-all duration-300"
+            >
+              Contact Us
+            </Link>
+          </div>
+          <button
+            onClick={() => {
+              window.scrollTo({
+                top: aboutSectionRef.current
+                  ? aboutSectionRef.current.offsetTop
+                  : 0,
+                behavior: "smooth",
+              });
+            }}
+            className="animate-bounce mt-8 bg-transparent border-none text-white cursor-pointer"
+            aria-label="Scroll to content"
+          >
+            <ChevronDown size={42} />
+          </button>
+        </div>
+      </section>
 
       {/* About Us Section */}
       <section
@@ -267,7 +325,7 @@ export default function Home() {
             </div>
             <div className="about-image">
               <Image
-                src="/static/imgs/image6.png"
+                src="/media/work-image.jpg"
                 alt="Stanchions Facilities"
                 width={800}
                 height={500}
@@ -362,7 +420,7 @@ export default function Home() {
                     strokeLinejoin="round"
                   />
                   <path
-                    d="M12 12L12 21M12 12L4 7.5M12 12L20 7.5"
+                    d="M12 12L12 22M12 12L3 7.5M12 12L21 7.5"
                     stroke="currentColor"
                     strokeWidth="2"
                   />
@@ -606,7 +664,7 @@ export default function Home() {
             </div>
             <div className="qhse-image">
               <Image
-                src="/static/imgs/qhse.jpg"
+                src="/media/qhse.jpg"
                 alt="QHSE at Stanchions"
                 width={600}
                 height={400}

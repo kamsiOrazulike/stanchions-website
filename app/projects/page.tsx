@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -10,25 +12,395 @@ import {
   MapPin,
   Tag,
   CheckCircle,
-  Filter,
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  X,
 } from "lucide-react";
-import { projects, getProjectsByCategory } from "./projects.data";
+import Link from "next/link";
+
+// Define types for images and project
+interface TimelineImage {
+  src: string;
+  month: string;
+  date: string;
+  caption: string;
+  // Internal field to control display order
+  displayOrder: number;
+}
+
+interface Project {
+  id: string;
+  title: string;
+  client: string;
+  date: string;
+  location: string;
+  category: string;
+  description: string;
+  achievements: string[];
+  image: string;
+  featured: boolean;
+  timelineImages: TimelineImage[];
+}
+
+// Create timeline images in the desired order - starting with March 2024
+const createTimelineImages = (): TimelineImage[] => {
+  return [
+    // Start with March 2024
+    {
+      src: "/media/upth/mar24-1.JPG",
+      month: "March",
+      date: "2024",
+      caption: "Roofing installation",
+      displayOrder: 1,
+    },
+    {
+      src: "/media/upth/mar24-2.JPG",
+      month: "March",
+      date: "2024",
+      caption: "Interior development begins",
+      displayOrder: 2,
+    },
+    // Then April 2024
+    {
+      src: "/media/upth/apr24-1.JPG",
+      month: "April",
+      date: "2024",
+      caption: "Final stages of construction",
+      displayOrder: 3,
+    },
+    // Then January 2024
+    {
+      src: "/media/upth/jan24-1.JPG",
+      month: "January",
+      date: "2024",
+      caption: "Foundation work begins",
+      displayOrder: 4,
+    },
+    {
+      src: "/media/upth/jan24-2.JPG",
+      month: "January",
+      date: "2024",
+      caption: "Initial framework installation",
+      displayOrder: 5,
+    },
+    {
+      src: "/media/upth/jan24-3.JPG",
+      month: "January",
+      date: "2024",
+      caption: "Site preparation complete",
+      displayOrder: 6,
+    },
+    {
+      src: "/media/upth/jan24-4.JPG",
+      month: "January",
+      date: "2024",
+      caption: "Framework progress",
+      displayOrder: 7,
+    },
+    // Then February 2025
+    {
+      src: "/media/upth/feb25-1.JPG",
+      month: "February",
+      date: "2025",
+      caption: "Wall construction begins",
+      displayOrder: 8,
+    },
+    {
+      src: "/media/upth/feb25-2.JPG",
+      month: "February",
+      date: "2025",
+      caption: "Structural elements complete",
+      displayOrder: 9,
+    },
+  ];
+};
+
+// Single project data for UPTH
+const upthProject: Project = {
+  id: "upth-medical-ward",
+  title: "UPTH Medical Ward Facility",
+  client: "University of Port Harcourt Teaching Hospital",
+  date: "2023-2025",
+  location: "Port Harcourt, Nigeria",
+  category: "civil",
+  description:
+    "Design and construction of a state-of-the-art medical ward facility at the University of Port Harcourt Teaching Hospital, enhancing healthcare delivery capabilities and patient care facilities.",
+  achievements: [
+    "Completed construction ahead of schedule, delivering the facility 3 weeks before the target date",
+    "Implemented energy-efficient systems reducing operational costs by approximately 25%",
+    "Incorporated advanced medical gas systems and emergency power backup for critical care areas",
+    "Designed flexible spaces that can be quickly reconfigured for different medical specialties",
+    "Achieved zero safety incidents throughout the entire construction period",
+  ],
+  image: "/media/upth/feb25-1.jpg",
+  featured: true,
+  timelineImages: createTimelineImages(),
+};
+
+// Projects array to allow for easy addition later
+const projects: Project[] = [upthProject];
+
+// Define order of months for filter buttons
+const monthDisplayOrder = ["March", "April", "January", "February"];
+
+// Timeline Gallery Component with proper TypeScript types
+interface TimelineGalleryProps {
+  images: TimelineImage[];
+  respectDisplayOrder?: boolean; // Whether to use displayOrder field or chronological sorting
+}
+
+const TimelineGallery: React.FC<TimelineGalleryProps> = ({
+  images,
+  respectDisplayOrder = true, // Default to respecting the display order
+}) => {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [activeFilter, setActiveFilter] = useState<string>("all");
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  // Sort images according to the specified display order
+  const sortedImages = [...images].sort((a, b) => {
+    if (respectDisplayOrder) {
+      return a.displayOrder - b.displayOrder;
+    } else {
+      // Regular chronological sorting
+      const aYearMonth = a.date + monthDisplayOrder.indexOf(a.month);
+      const bYearMonth = b.date + monthDisplayOrder.indexOf(b.month);
+      return aYearMonth.localeCompare(bYearMonth);
+    }
+  });
+
+  // Filter images by month
+  const filteredImages =
+    activeFilter === "all"
+      ? sortedImages
+      : sortedImages.filter(
+          (img) => img.month.toLowerCase() === activeFilter.toLowerCase()
+        );
+
+  // Get unique months for filter
+  const uniqueMonths = [...new Set(sortedImages.map((img) => img.month))];
+
+  // Order month filters according to our desired display order
+  const orderedMonths = uniqueMonths.sort((a, b) => {
+    return monthDisplayOrder.indexOf(a) - monthDisplayOrder.indexOf(b);
+  });
+
+  // Open lightbox
+  const openLightbox = (index: number) => {
+    setSelectedImage(index);
+    document.body.style.overflow = "hidden";
+  };
+
+  // Close lightbox
+  const closeLightbox = () => {
+    setSelectedImage(null);
+    document.body.style.overflow = "auto";
+  };
+
+  // Navigate in lightbox
+  const navigateImage = (direction: number) => {
+    if (selectedImage !== null) {
+      const newIndex = selectedImage + direction;
+      if (newIndex >= 0 && newIndex < filteredImages.length) {
+        setSelectedImage(newIndex);
+      }
+    }
+  };
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedImage !== null) {
+        if (e.key === "ArrowRight") navigateImage(1);
+        if (e.key === "ArrowLeft") navigateImage(-1);
+        if (e.key === "Escape") closeLightbox();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImage, filteredImages]);
+
+  useEffect(() => {
+    if (galleryRef.current && filteredImages.length > 0) {
+      gsap.fromTo(
+        ".timeline-item",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: "power3.out",
+        }
+      );
+    }
+  }, [filteredImages, activeFilter]);
+
+  return (
+    <div ref={galleryRef} className="timeline-gallery">
+      <h3 className="text-2xl font-bold text-white mb-8">
+        Project Progress Timeline
+      </h3>
+
+      {/* Month filters */}
+      <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <button
+          onClick={() => setActiveFilter("all")}
+          className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            activeFilter === "all"
+              ? "bg-red-600 text-white"
+              : "bg-[#2a2728] text-gray-300 hover:bg-[#444] hover:text-white"
+          }`}
+        >
+          All Photos
+        </button>
+        {orderedMonths.map((month) => (
+          <button
+            key={month}
+            onClick={() => setActiveFilter(month)}
+            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+              activeFilter === month
+                ? "bg-red-600 text-white"
+                : "bg-[#2a2728] text-gray-300 hover:bg-[#444] hover:text-white"
+            }`}
+          >
+            {month}
+          </button>
+        ))}
+      </div>
+
+      {/* Image gallery grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredImages.map((image, index) => (
+          <div
+            key={index}
+            className="timeline-item bg-[#2a2728] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            onClick={() => openLightbox(index)}
+          >
+            <div className="relative h-64">
+              <Image
+                src={image.src}
+                alt={image.caption || `Project progress - ${image.date}`}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-red-600 font-medium">{image.month}</span>
+                <span className="text-gray-400 text-sm">{image.date}</span>
+              </div>
+              {image.caption && (
+                <p className="text-gray-300 text-sm">{image.caption}</p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox */}
+      {selectedImage !== null && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center">
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 text-white hover:text-red-600 transition-colors"
+            aria-label="Close lightbox"
+          >
+            <X size={32} />
+          </button>
+
+          <div className="relative w-full max-w-5xl h-[70vh] px-4">
+            {selectedImage !== null && filteredImages[selectedImage] && (
+              <Image
+                src={filteredImages[selectedImage].src}
+                alt={
+                  filteredImages[selectedImage].caption || "Project progress"
+                }
+                fill
+                sizes="100vw"
+                className="object-contain"
+              />
+            )}
+
+            {/* Caption */}
+            {selectedImage !== null && filteredImages[selectedImage] && (
+              <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-4 text-center">
+                <p className="text-white text-lg">
+                  {filteredImages[selectedImage].caption} (
+                  {filteredImages[selectedImage].month}{" "}
+                  {filteredImages[selectedImage].date})
+                </p>
+              </div>
+            )}
+
+            {/* Navigation buttons */}
+            <button
+              onClick={() => navigateImage(-1)}
+              disabled={selectedImage === 0}
+              className={`absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 p-3 rounded-full ${
+                selectedImage === 0
+                  ? "opacity-30 cursor-not-allowed"
+                  : "opacity-100"
+              }`}
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={28} className="text-white" />
+            </button>
+
+            <button
+              onClick={() => navigateImage(1)}
+              disabled={selectedImage === filteredImages.length - 1}
+              className={`absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 p-3 rounded-full ${
+                selectedImage === filteredImages.length - 1
+                  ? "opacity-30 cursor-not-allowed"
+                  : "opacity-100"
+              }`}
+              aria-label="Next image"
+            >
+              <ChevronRight size={28} className="text-white" />
+            </button>
+          </div>
+
+          {/* Counter */}
+          <div className="mt-4 text-white">
+            {selectedImage !== null ? selectedImage + 1 : 0} of{" "}
+            {filteredImages.length}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default function Projects() {
-  const [filter, setFilter] = useState("all");
-  const introRef = useRef(null);
-  const featuredRef = useRef(null);
-  const portfolioRef = useRef(null);
-  const statsRef = useRef(null);
-
-  const filteredProjects =
-    filter === "all" ? projects : getProjectsByCategory(filter);
+  const introRef = useRef<HTMLDivElement>(null);
+  const projectRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const servicesSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollTrigger);
 
+      // Hero content animation
+      gsap.fromTo(
+        ".hero-content",
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          delay: 0.3,
+        }
+      );
+
+      // Intro content animation
       gsap.fromTo(
         ".intro-content",
         { opacity: 0, y: 50 },
@@ -44,54 +416,55 @@ export default function Projects() {
         }
       );
 
+      // Project animation
       gsap.fromTo(
-        ".featured-project",
-        { opacity: 0, y: 50 },
+        ".project-image",
+        { opacity: 0, x: -50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: projectRef.current,
+            start: "top 70%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".project-content",
+        { opacity: 0, x: 50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          delay: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: projectRef.current,
+            start: "top 70%",
+          },
+        }
+      );
+
+      // Timeline section animation
+      gsap.fromTo(
+        ".timeline-section-header",
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
           duration: 0.8,
-          stagger: 0.3,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: featuredRef.current,
-            start: "top 70%",
+            trigger: timelineRef.current,
+            start: "top 80%",
           },
         }
       );
 
-      gsap.fromTo(
-        ".filter-buttons button",
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: portfolioRef.current,
-            start: "top 85%",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        ".project-card",
-        { opacity: 0, scale: 0.9 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.15,
-          ease: "back.out(1.2)",
-          scrollTrigger: {
-            trigger: portfolioRef.current,
-            start: "top 70%",
-          },
-        }
-      );
-
+      // Stats animation
       gsap.fromTo(
         ".stat-item",
         { opacity: 0, y: 30 },
@@ -108,35 +481,77 @@ export default function Projects() {
         }
       );
 
+      // CTA animation
+      gsap.fromTo(
+        ".cta-content",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ctaRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+
       return () => {
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
     }
-  }, [filter]);
+  }, []);
 
   const scrollToNextSection = () => {
     window.scrollTo({
-      top: window.innerHeight,
+      top: servicesSectionRef.current
+        ? servicesSectionRef.current.offsetTop
+        : 0,
       behavior: "smooth",
     });
   };
 
   return (
     <main className="relative min-h-screen bg-[#373435]">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-red-600 filter blur-3xl"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-red-900 filter blur-3xl"></div>
-      </div>
+      {/* Hero Section with Video Background */}
+      <section className="relative h-screen overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 w-full h-full z-0">
+            <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            disablePictureInPicture
+            controlsList="nodownload nofullscreen noremoteplayback"
+            className="w-full h-full object-cover"
+            >
+            <source src="/media/background_projects.webm" type="video/webm" />
+            </video>
+          {/* Overlay to darken video and make text more readable */}
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-white">
-        <div className="text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Projects</h1>
-          <p className="text-lg md:text-xl mb-12">
+        {/* Hero Content */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4 hero-content mt-24">
+          <Image
+            src="/logo2.svg"
+            alt="Stanchions Logo"
+            width={180}
+            height={100}
+            priority
+            draggable={false}
+            className="mb-12"
+          />
+          <h1 className="text-4xl md:text-5xl max-w-6xl mx-auto mb-8 font-bold">
+            Our Projects
+          </h1>
+          <p className="text-md md:text-xl max-w-2xl mx-auto mb-4">
             Delivering excellence across a diverse portfolio of engineering and
             technical projects
           </p>
+
           <button
             onClick={scrollToNextSection}
             className="animate-bounce mt-8 bg-transparent border-none text-white cursor-pointer"
@@ -156,253 +571,106 @@ export default function Projects() {
             </h2>
             <p className="text-gray-300 text-lg max-w-4xl mx-auto">
               At Stanchions, we pride ourselves on our track record of
-              successful project delivery across the oil and gas sector. Our
-              project portfolio showcases our expertise in pipeline
+              successful project delivery across the oil and gas sector and
+              beyond. Our project portfolio showcases our expertise in pipeline
               construction, mechanical & electrical installations, location
               preparation, civil construction, procurement, and logistics
-              services.
+              services. Each project reflects our commitment to quality, safety,
+              and delivering exceptional value to our clients.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Featured Projects */}
-      <section ref={featuredRef} className="py-20 relative z-10 bg-[#373435]">
+      {/* UPTH Project Section */}
+      <section
+        ref={servicesSectionRef}
+        className="py-20 relative z-10 bg-[#373435]"
+      >
         <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-3xl font-bold text-white mb-16 text-center">
-            Featured <span className="text-red-600">Projects</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-16 text-center">
+            Featured <span className="text-red-600">Project</span>
           </h2>
 
-          <div className="space-y-20">
-            {projects
-              .filter((project) => project.featured)
-              .map((project, index) => (
-                <div
-                  key={project.id}
-                  className={`featured-project grid grid-cols-1 ${
-                    index % 2 === 0
-                      ? "md:grid-cols-5"
-                      : "md:grid-cols-5 md:flex-row-reverse"
-                  } gap-8 items-center`}
-                >
-                  <div
-                    className={`md:col-span-3 ${
-                      index % 2 === 0 ? "md:order-1" : "md:order-2"
-                    }`}
-                  >
-                    <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-xl">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent py-4 px-6">
-                        <h3 className="text-xl font-bold text-white">
-                          {project.title}
-                        </h3>
-                        <p className="text-gray-300 text-sm">
-                          Client: {project.client}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={`md:col-span-2 ${
-                      index % 2 === 0 ? "md:order-2" : "md:order-1"
-                    }`}
-                  >
-                    <div className="bg-[#2a2728] p-8 rounded-lg shadow-lg h-full">
-                      <div className="flex items-start space-x-4 mb-4">
-                        <Calendar className="text-red-600 w-5 h-5 flex-shrink-0 mt-1" />
-                        <div>
-                          <h4 className="text-white font-semibold">Year</h4>
-                          <p className="text-gray-300">{project.date}</p>
-                        </div>
-                      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="project-image">
+              <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+                <Image
+                  src={upthProject.image}
+                  alt={upthProject.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            <div className="project-content">
+              <div className="bg-[#2a2728] p-8 rounded-lg shadow-lg h-full">
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  {upthProject.title}
+                </h3>
+                <p className="text-gray-300 mb-6">
+                  Client: {upthProject.client}
+                </p>
 
-                      <div className="flex items-start space-x-4 mb-4">
-                        <MapPin className="text-red-600 w-5 h-5 flex-shrink-0 mt-1" />
-                        <div>
-                          <h4 className="text-white font-semibold">Location</h4>
-                          <p className="text-gray-300">{project.location}</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start space-x-4 mb-6">
-                        <Tag className="text-red-600 w-5 h-5 flex-shrink-0 mt-1" />
-                        <div>
-                          <h4 className="text-white font-semibold">Category</h4>
-                          <p className="text-gray-300 capitalize">
-                            {project.category} Services
-                          </p>
-                        </div>
-                      </div>
-
-                      <p className="text-gray-300 mb-6">
-                        {project.description}
-                      </p>
-
-                      <h4 className="text-white font-semibold mb-3">
-                        Key Achievements:
-                      </h4>
-                      <ul className="space-y-2">
-                        {project.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-start space-x-2">
-                            <CheckCircle className="text-red-600 w-5 h-5 flex-shrink-0 mt-1" />
-                            <span className="text-gray-300 text-sm">
-                              {achievement}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                <div className="flex items-start space-x-4 mb-4">
+                  <Calendar className="text-red-600 w-5 h-5 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="text-white font-semibold">Year</h4>
+                    <p className="text-gray-300">{upthProject.date}</p>
                   </div>
                 </div>
-              ))}
+
+                <div className="flex items-start space-x-4 mb-4">
+                  <MapPin className="text-red-600 w-5 h-5 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="text-white font-semibold">Location</h4>
+                    <p className="text-gray-300">{upthProject.location}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4 mb-6">
+                  <Tag className="text-red-600 w-5 h-5 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="text-white font-semibold">Category</h4>
+                    <p className="text-gray-300 capitalize">
+                      {upthProject.category} Construction
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-gray-300 mb-6">{upthProject.description}</p>
+
+                <h4 className="text-white font-semibold mb-3">
+                  Key Achievements:
+                </h4>
+                <ul className="space-y-2">
+                  {upthProject.achievements.map((achievement, i) => (
+                    <li key={i} className="flex items-start space-x-2">
+                      <CheckCircle className="text-red-600 w-5 h-5 flex-shrink-0 mt-1" />
+                      <span className="text-gray-300 text-sm">
+                        {achievement}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Project Portfolio */}
-      <section ref={portfolioRef} className="py-20 relative z-10 bg-[#2a2728]">
+      {/* Timeline Gallery Section */}
+      <section ref={timelineRef} className="py-20 relative z-10 bg-[#2a2728]">
         <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-3xl font-bold text-white mb-16 text-center">
-            Project <span className="text-red-600">Portfolio</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-16 text-center timeline-section-header">
+            Construction <span className="text-red-600">Timeline</span>
           </h2>
 
-          {/* Filter buttons */}
-          <div className="filter-buttons flex flex-wrap justify-center gap-3 mb-12">
-            <button
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center ${
-                filter === "all"
-                  ? "bg-red-600 text-white"
-                  : "bg-[#373435] text-gray-300 hover:bg-[#444] hover:text-white"
-              }`}
-              onClick={() => setFilter("all")}
-            >
-              <Filter className="w-4 h-4 mr-2" />
-              All Projects
-            </button>
-            <button
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filter === "pipeline"
-                  ? "bg-red-600 text-white"
-                  : "bg-[#373435] text-gray-300 hover:bg-[#444] hover:text-white"
-              }`}
-              onClick={() => setFilter("pipeline")}
-            >
-              Pipeline
-            </button>
-            <button
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filter === "mechanical"
-                  ? "bg-red-600 text-white"
-                  : "bg-[#373435] text-gray-300 hover:bg-[#444] hover:text-white"
-              }`}
-              onClick={() => setFilter("mechanical")}
-            >
-              Mechanical & Electrical
-            </button>
-            <button
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filter === "location"
-                  ? "bg-red-600 text-white"
-                  : "bg-[#373435] text-gray-300 hover:bg-[#444] hover:text-white"
-              }`}
-              onClick={() => setFilter("location")}
-            >
-              Location Preparation
-            </button>
-            <button
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filter === "civil"
-                  ? "bg-red-600 text-white"
-                  : "bg-[#373435] text-gray-300 hover:bg-[#444] hover:text-white"
-              }`}
-              onClick={() => setFilter("civil")}
-            >
-              Civil Construction
-            </button>
-            <button
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filter === "procurement"
-                  ? "bg-red-600 text-white"
-                  : "bg-[#373435] text-gray-300 hover:bg-[#444] hover:text-white"
-              }`}
-              onClick={() => setFilter("procurement")}
-            >
-              Procurement
-            </button>
-            <button
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filter === "logistics"
-                  ? "bg-red-600 text-white"
-                  : "bg-[#373435] text-gray-300 hover:bg-[#444] hover:text-white"
-              }`}
-              onClick={() => setFilter("logistics")}
-            >
-              Logistics
-            </button>
-          </div>
-
-          {/* Project Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <div
-                key={project.id}
-                className="project-card bg-[#373435] rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
-              >
-                <div className="relative h-48">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
-                    <div className="absolute bottom-0 left-0 w-full p-4">
-                      <span className="text-xs font-medium text-white bg-red-600 px-2 py-1 rounded-full uppercase">
-                        {project.category}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm mb-4">
-                    Client: {project.client}
-                  </p>
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="flex items-center">
-                      <Calendar className="text-red-600 w-4 h-4 mr-2" />
-                      <span className="text-gray-300 text-sm">
-                        {project.date}
-                      </span>
-                    </div>
-                    <div className="flex items-center">
-                      <MapPin className="text-red-600 w-4 h-4 mr-2" />
-                      <span className="text-gray-300 text-sm">
-                        {project.location}
-                      </span>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 text-sm line-clamp-3 mb-4">
-                    {project.description}
-                  </p>
-                  <a
-                    href={`/projects/${project.id}`}
-                    className="text-red-600 text-sm font-medium flex items-center hover:text-red-500 transition-colors"
-                  >
-                    <span>View Project Details</span>
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TimelineGallery
+            images={upthProject.timelineImages}
+            respectDisplayOrder={true}
+          />
         </div>
       </section>
 
@@ -456,8 +724,8 @@ export default function Projects() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative z-10 bg-[#2a2728]">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
+      <section ref={ctaRef} className="py-20 relative z-10 bg-[#2a2728]">
+        <div className="container mx-auto px-4 max-w-4xl text-center cta-content">
           <h2 className="text-3xl font-bold text-white mb-8">
             Ready to <span className="text-red-600">Start Your Project?</span>
           </h2>
@@ -465,12 +733,12 @@ export default function Projects() {
             Contact us today to discuss how Stanchions can bring your project to
             life with our world-class engineering and technical expertise.
           </p>
-          <a
+          <Link
             href="/contact"
             className="inline-block border border-red-600 text-white px-10 py-4 text-lg hover:bg-red-600 transition-all duration-300"
           >
             Contact Our Team
-          </a>
+          </Link>
         </div>
       </section>
 
