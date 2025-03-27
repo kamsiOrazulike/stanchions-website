@@ -51,14 +51,14 @@ const createTimelineImages = (): TimelineImage[] => {
       src: "/media/upth/mar24-1.JPG",
       month: "March",
       date: "2024",
-      caption: "Roofing installation",
+      caption: "Foundation preparation",
       displayOrder: 1,
     },
     {
       src: "/media/upth/mar24-2.JPG",
       month: "March",
       date: "2024",
-      caption: "Interior development begins",
+      caption: "Concrete foundation work",
       displayOrder: 2,
     },
     // Then April 2024
@@ -66,7 +66,7 @@ const createTimelineImages = (): TimelineImage[] => {
       src: "/media/upth/apr24-1.JPG",
       month: "April",
       date: "2024",
-      caption: "Final stages of construction",
+      caption: "Concrete slab installation",
       displayOrder: 3,
     },
     // Then January 2024
@@ -74,28 +74,28 @@ const createTimelineImages = (): TimelineImage[] => {
       src: "/media/upth/jan24-1.JPG",
       month: "January",
       date: "2024",
-      caption: "Foundation work begins",
+      caption: "Initial structural framework",
       displayOrder: 4,
     },
     {
       src: "/media/upth/jan24-2.JPG",
       month: "January",
       date: "2024",
-      caption: "Initial framework installation",
+      caption: "Framework and floor installation",
       displayOrder: 5,
     },
     {
       src: "/media/upth/jan24-3.JPG",
       month: "January",
       date: "2024",
-      caption: "Site preparation complete",
+      caption: "Roof framework preparation",
       displayOrder: 6,
     },
     {
       src: "/media/upth/jan24-4.JPG",
       month: "January",
       date: "2024",
-      caption: "Framework progress",
+      caption: "Wall framing progress",
       displayOrder: 7,
     },
     // Then February 2025
@@ -103,14 +103,14 @@ const createTimelineImages = (): TimelineImage[] => {
       src: "/media/upth/feb25-1.JPG",
       month: "February",
       date: "2025",
-      caption: "Wall construction begins",
+      caption: "Roof installation begun",
       displayOrder: 8,
     },
     {
       src: "/media/upth/feb25-2.JPG",
       month: "February",
       date: "2025",
-      caption: "Structural elements complete",
+      caption: "Exterior walls and roofing complete",
       displayOrder: 9,
     },
   ];
@@ -518,7 +518,7 @@ export default function Projects() {
       <section className="relative h-screen overflow-hidden">
         {/* Background Video */}
         <div className="absolute inset-0 w-full h-full z-0">
-            <video
+          <video
             autoPlay
             loop
             muted
@@ -526,9 +526,9 @@ export default function Projects() {
             disablePictureInPicture
             controlsList="nodownload nofullscreen noremoteplayback"
             className="w-full h-full object-cover"
-            >
+          >
             <source src="/media/background_projects.webm" type="video/webm" />
-            </video>
+          </video>
           {/* Overlay to darken video and make text more readable */}
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
