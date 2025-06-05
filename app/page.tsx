@@ -171,42 +171,42 @@ export default function Home() {
     {
       name: "Pipeline Construction",
       description:
-        "We construct, repair and deliver pipelines that transport oil, natural gas, petroleum products, slurry, water, and industrial gases for government and private customers.",
+        "We deliver comprehensive pipeline construction, rehabilitation, and maintenance services for oil, natural gas, petroleum products, and industrial applications. Our expertise ensures safe, efficient transportation infrastructure that meets international standards.",
       isNew: false,
       imageSrc: "/media/pipeline-construction.jpg",
     },
     {
       name: "Mechanical & Electrical Installations",
       description:
-        "We provide electrical and mechanical solutions for industrial and commercial clients with our experienced and multi-skilled team of engineers.",
+        "Our specialized engineering teams deliver comprehensive mechanical and electrical solutions for industrial and commercial applications, leveraging advanced technologies and proven methodologies to ensure optimal performance and reliability.",
       isNew: false,
       imageSrc: "/media/mechanical-electrical.jpg",
     },
     {
       name: "Location Preparation",
       description:
-        "We prepare land and swamp sites for rig operations, ensuring that they are adequately ready to achieve the required results.",
+        "We provide comprehensive site preparation services for drilling operations across diverse terrain conditions, including swamp and land locations, ensuring optimal readiness for successful rig deployment and operations.",
       isNew: false,
       imageSrc: "/media/location-prep.jpg",
     },
     {
       name: "Road & Civil Construction",
       description:
-        "With our industrial background and proven technical capacity, we contribute to the success of large-scale road project operations.",
+        "Drawing on our extensive industrial experience and proven technical capabilities, we deliver large-scale road and civil infrastructure projects that support critical operations and community development across Nigeria.",
       isNew: false,
       imageSrc: "/media/road-construction.jpg",
     },
     {
       name: "Procurement",
       description:
-        "Our procurement strategy is based on experience and long-term relationships with in-depth understanding of both local and international markets.",
+        "Our strategic procurement approach leverages extensive market knowledge and established supplier relationships to deliver cost-effective sourcing solutions across local and international markets, ensuring quality and timely delivery.",
       isNew: false,
       imageSrc: "/media/procurement.jpg",
     },
     {
       name: "Logistics",
       description:
-        "We own and operate our own vehicles, forklifts, cranes and other equipment ensuring supplies and materials are adequately handled and delivered.",
+        "Our comprehensive logistics capabilities include our own fleet of specialized vehicles, forklifts, cranes, and material handling equipment, ensuring secure, efficient transportation and delivery of supplies and materials to project sites.",
       isNew: false,
       imageSrc: "/media/logistics.jpg",
     },
@@ -258,7 +258,7 @@ export default function Home() {
             className="mb-12"
           />
           <p className="text-md md:text-xl max-w-2xl mx-auto mb-4">
-            Excellence in Construction & Fabrication Support Services in Nigeria
+            Premier Indigenous Engineering Solutions Provider - Delivering Excellence in Oil & Gas Infrastructure
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -303,18 +303,10 @@ export default function Home() {
                 About <span className="text-red-600">Us</span>
               </h2>
               <p className="text-gray-300 mb-6">
-                Stanchions Nigeria is one of the fastest Local Content Company,
-                providing World Class Engineering & Support Services in the Oil
-                and Gas sector of Nigeria.
+                Stanchions Nigeria Limited stands as a premier indigenous engineering solutions provider, delivering world-class construction and fabrication support services to Nigeria's Oil and Gas sector with unwavering commitment to excellence.
               </p>
               <p className="text-gray-300 mb-12">
-                With a wide range of experience in pipeline construction and
-                rehabilitation services, Civil & Mechanical Engineering Services
-                as well as oversea procurement for the oil and gas industry.
-                Since 2006, we have built a reputation as a leading Civil &
-                Mechanical Engineering, Procurement & Logistics Company with an
-                enviable list of core capabilities and customer centric
-                solutions.
+                Since 2006, we have cultivated an exceptional reputation through our comprehensive capabilities in pipeline construction and rehabilitation, civil and mechanical engineering services, and strategic procurement solutions. Our proven track record encompasses successful project delivery across diverse operational environments, positioning us as a trusted partner for industry leaders seeking reliable, innovative, and cost-effective engineering solutions.
               </p>
               <Link
                 href="/about-us"
@@ -367,8 +359,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Vision</h3>
               <p className="text-gray-300">
-                To achieve local content leadership position through flawless
-                project execution, strategic research and staff development.
+                To be the leading indigenous engineering solutions provider in Nigeria's oil and gas sector, recognized for our commitment to excellence, innovation through research and development, and continuous investment in our people.
               </p>
             </div>
 
@@ -397,10 +388,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Mission</h3>
               <p className="text-gray-300">
-                To provide unparalleled quality delivery of world class
-                Engineering, Procurement and Constructions (EPC) projects and
-                allied services, Efficiently, Timely, Safely and Cost
-                Effectively.
+                To deliver exceptional engineering, procurement, and construction solutions that exceed client expectations while maintaining the highest standards of safety, quality, environmental stewardship, and operational excellence.
               </p>
             </div>
 
@@ -428,8 +416,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Values</h3>
               <p className="text-gray-300">
-                Team work, Safety, Fairness, Motivation and Preservation of
-                Human, Material Resources, and the Environment.
+                Teamwork, Safety Excellence, Fairness, Innovation, and Stewardship - guiding our commitment to sustainable development and responsible resource management.
               </p>
             </div>
           </div>
@@ -605,15 +592,10 @@ export default function Home() {
               </h2>
               <div className="prose prose-lg text-gray-300 mb-8 prose-invert">
                 <p>
-                  Stanchions Nigeria Limited is a one-stop-shop engineering
-                  solutions provider for engineering, procurement and
-                  construction services in quality, promptness and
-                  professionalism.
+                  Stanchions Nigeria Limited stands as your comprehensive engineering solutions partner, delivering integrated engineering, procurement, and construction services with unwavering commitment to quality, innovation, and professional excellence.
                 </p>
                 <p className="mt-4">
-                  We command world class expertise in total program management,
-                  seamlessly integrating required solutions and services while
-                  maintaining ethical business practices.
+                  We leverage world-class expertise in total program management, seamlessly integrating cutting-edge solutions and technical services while maintaining the highest standards of ethical business practices and operational excellence.
                 </p>
               </div>
               <Link

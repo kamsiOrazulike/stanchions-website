@@ -570,13 +570,7 @@ export default function Projects() {
               Project <span className="text-red-600">Excellence</span>
             </h2>
             <p className="text-gray-300 text-lg max-w-4xl mx-auto">
-              At Stanchions, we pride ourselves on our track record of
-              successful project delivery across the oil and gas sector and
-              beyond. Our project portfolio showcases our expertise in pipeline
-              construction, mechanical & electrical installations, location
-              preparation, civil construction, procurement, and logistics
-              services. Each project reflects our commitment to quality, safety,
-              and delivering exceptional value to our clients.
+              At Stanchions, we pride ourselves on our exceptional track record of successful project delivery across Nigeria&apos;s oil and gas sector and beyond. Our comprehensive project portfolio demonstrates our expertise in pipeline construction, mechanical & electrical installations, location preparation, civil construction, procurement, and logistics services. Each project reflects our unwavering commitment to quality, safety, innovation, and delivering exceptional value to our clients.
             </p>
           </div>
         </div>
@@ -730,8 +724,7 @@ export default function Projects() {
             Ready to <span className="text-red-600">Start Your Project?</span>
           </h2>
           <p className="text-gray-300 mb-10 text-lg">
-            Contact us today to discuss how Stanchions can bring your project to
-            life with our world-class engineering and technical expertise.
+            Contact us today to discuss how Stanchions can bring your project to life with our world-class engineering expertise, innovative solutions, and unwavering commitment to excellence.
           </p>
           <Link
             href="/contact"

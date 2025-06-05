@@ -6,11 +6,10 @@ const LeadershipContent = () => {
   return (
     <div className="p-4 md:p-8">
       <h2 className="text-xl md:text-2xl font-bold text-white text-center mb-3 md:mb-4">
-        Management Team
+        Leadership Team
       </h2>
       <p className="text-white text-sm md:text-base text-center max-w-3xl mx-auto mb-8 md:mb-16">
-        Our experienced management team brings decades of industry expertise and
-        leadership to drive our company's success.
+        Our distinguished leadership team combines decades of industry expertise, strategic vision, and operational excellence to guide Stanchions toward continued success and innovation in the engineering solutions sector.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
@@ -30,11 +29,7 @@ const LeadershipContent = () => {
             OON– FOUNDER & GROUP MANAGING DIRECTOR
           </p>
           <p className="text-white text-xs md:text-sm">
-            Dr. Orazulike holds a B.Sc. in Accounting from the University of
-            Nigeria and completed the Harvard Business School OPM program. He is
-            a board member of FATE Foundation and formerly served on the board
-            of Fidelity Bank PLC. In 2015, he received an honorary Doctor of
-            Science degree from the University of Port Harcourt.
+            Dr. Orazulike is the visionary founder and Group Managing Director of Stanchions Nigeria Limited. He holds a B.Sc. in Accounting from the University of Nigeria and is a distinguished alumnus of Harvard Business School's Owner/President Management (OPM) program. His leadership extends beyond Stanchions as a board member of FATE Foundation and former board member of Fidelity Bank PLC. In recognition of his contributions to Nigeria's development, he received an honorary Doctor of Science degree from the University of Port Harcourt in 2015.
           </p>
         </div>
 
@@ -54,14 +49,7 @@ const LeadershipContent = () => {
             CHIEF FINANCE OFFICER
           </p>
           <p className="text-white text-xs md:text-sm">
-            Uwojeya Daniel is a seasoned financial expert with extensive
-            experience in corporate finance, risk management, and regulatory
-            compliance. A Fellow of ICAN and CITN, he provides strategic
-            financial oversight, ensuring operational efficiency and sustainable
-            growth at Stanchions. His expertise in financial planning, cost
-            optimization, and investment strategy strengthens the company's
-            financial position while driving profitability and long-term value
-            creation.
+            Uwojeya Daniel serves as Chief Financial Officer, bringing extensive expertise in corporate finance, risk management, and regulatory compliance. As a Fellow of both the Institute of Chartered Accountants of Nigeria (ICAN) and the Chartered Institute of Taxation of Nigeria (CITN), he provides strategic financial oversight that ensures operational efficiency and sustainable growth. His comprehensive expertise in financial planning, cost optimization, and investment strategy strengthens Stanchions' financial foundation while driving profitability and long-term value creation.
           </p>
         </div>
 
@@ -81,13 +69,7 @@ const LeadershipContent = () => {
             CHIEF TECHNICAL ADVISOR
           </p>
           <p className="text-white text-xs md:text-sm">
-            Gabriel Oramasionwu is a highly experienced professional in oil &
-            gas, engineering, and business strategy. With a strong background in
-            project management, process optimization, and technical innovation,
-            he plays a pivotal role in enhancing Stanchions's operational efficiency
-            and service delivery. His expertise in business development and risk
-            management ensures the successful execution of complex projects,
-            driving sustainable growth and industry leadership.
+            Gabriel Oramasionwu serves as Chief Technical Advisor, bringing extensive expertise in oil & gas operations, engineering excellence, and strategic business development. With a proven track record in project management, process optimization, and technical innovation, he plays a pivotal role in enhancing Stanchions' operational efficiency and service delivery standards. His comprehensive expertise in business development and risk management ensures the successful execution of complex projects, driving sustainable growth and maintaining our position as an industry leader.
           </p>
         </div>
       </div>

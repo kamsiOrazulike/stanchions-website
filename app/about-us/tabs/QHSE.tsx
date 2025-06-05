@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Image from "next/image";
 import { Shield, Gauge, Heart, Leaf } from "lucide-react";
@@ -41,31 +40,19 @@ const QHSEContent = () => {
 
           <div className="prose prose-lg text-gray-300 prose-invert">
             <p>
-              Stanchions ensures that the functions of quality management exists
-              throughout our organization to the degree necessary to ensure that
-              the acceptance and performance criteria of our services are
-              continuously met. We owe our clients services that not only meet
-              statutory quality requirement, but exceeds their expectations.
+              Stanchions maintains comprehensive quality management systems throughout our organization to ensure that acceptance and performance criteria for our services are consistently met and exceeded. We are committed to delivering services that not only meet statutory quality requirements but surpass client expectations in every aspect of our operations.
             </p>
 
             <p>
-              Stanchions adopts the zero Loss Time Injury (LTA) philosophy with
-              respect to health, safety, and environment. We continuously work
-              to reduce risks and hazards to the environment and the employees'
-              health and safety.
+              We embrace a zero Loss Time Injury (LTI) philosophy with unwavering commitment to health, safety, and environmental stewardship. Through continuous risk assessment and mitigation strategies, we work diligently to eliminate hazards and protect both our workforce and the communities in which we operate.
             </p>
 
             <p>
-              All our employees are required to use the time necessary to plan
-              and perform tasks in a safe and efficient manner.
+              All team members are required to allocate adequate time for proper planning and execution of tasks in a safe, efficient, and environmentally responsible manner. This approach ensures optimal outcomes while maintaining our high standards for quality and safety.
             </p>
 
             <p>
-              The above policy statement is supported by a system for continuous
-              improvement, which sweeps across every facet of the company
-              business and our employees understands and appreciate, as well as
-              conform to our continuing commitment to quality, health, safety,
-              and environment.
+              Our comprehensive policy framework is supported by a robust system of continuous improvement that permeates every aspect of our business operations. Our employees understand, embrace, and actively contribute to our ongoing commitment to excellence in quality, health, safety, and environmental responsibility.
             </p>
           </div>
         </div>
@@ -84,11 +71,7 @@ const QHSEContent = () => {
               Our Commitment to Excellence
             </h3>
             <p className="text-gray-300">
-              At Stanchions, we believe that maintaining the highest standards
-              of Quality, Health, Safety, and Environment is not just a
-              regulatory requirement but a core value that defines who we are as
-              an organization. Our commitment to QHSE excellence is embedded in
-              every aspect of our operations.
+              At Stanchions, we believe that maintaining the highest standards of Quality, Health, Safety, and Environment is not just a regulatory requirement but a fundamental value that defines our organizational identity. Our commitment to QHSE excellence is embedded in every aspect of our operations, from project planning through execution and delivery.
             </p>
           </div>
         </div>

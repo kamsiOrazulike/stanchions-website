@@ -130,8 +130,7 @@ export default function Services() {
         <div className="text-center max-w-4xl mx-auto px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Services</h1>
           <p className="text-lg md:text-xl mb-12">
-            Comprehensive engineering, procurement and construction services
-            with a focus on quality, promptness and professionalism.
+            Premier indigenous engineering solutions delivering excellence across the oil and gas sector with unwavering commitment to quality, innovation, and operational excellence.
           </p>
           <button
             onClick={scrollToNextSection}
@@ -152,11 +151,7 @@ export default function Services() {
               <span className="text-red-600">Engineering Solutions</span>
             </h2>
             <p className="text-gray-300 text-lg max-w-4xl mx-auto">
-              Stanchions Nigeria Limited is a one-stop-shop engineering
-              solutions provider for engineering, procurement and construction
-              services. We command world class expertise in total program
-              management, seamlessly integrating required solutions and services
-              while maintaining ethical business practices.
+              Stanchions Nigeria Limited stands as your comprehensive engineering solutions partner, delivering integrated engineering, procurement, and construction services. Our world-class expertise encompasses total program management, seamlessly integrating innovative solutions and services while upholding the highest standards of ethical business practices and operational excellence.
             </p>
           </div>
 
@@ -474,9 +469,7 @@ export default function Services() {
             Ready to <span className="text-red-600">Work With Us?</span>
           </h2>
           <p className="text-gray-300 mb-10 text-lg">
-            Contact our team to discuss your project requirements and discover
-            how Stanchions can deliver world-class engineering solutions for
-            your business.
+            Contact our team to discuss your project requirements and discover how Stanchions can deliver world-class engineering solutions, innovative approaches, and exceptional value for your business.
           </p>
           <a
             href="/contact"

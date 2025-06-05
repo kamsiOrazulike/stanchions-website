@@ -9,6 +9,8 @@ const Footer = () => {
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
+    { name: "Services", href: "/services" },
+    { name: "QHSE Policy", href: "/qhse" },
     { name: "Projects", href: "/projects" },
     // { name: "Contact", href: "/contact" },
   ];
@@ -39,8 +41,7 @@ const Footer = () => {
                   draggable="false"
                 />
                 <p className="text-gray-300 text-sm">
-                  Providing World Class Engineering & Support Services in the
-                  Oil and Gas sector of Nigeria since 1997.
+                  Premier indigenous engineering solutions provider delivering excellence in oil and gas infrastructure since 1997, with unwavering commitment to innovation and operational excellence.
                 </p>
               </div>
             </div>

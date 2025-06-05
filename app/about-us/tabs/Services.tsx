@@ -81,42 +81,42 @@ const ServicesContent = () => {
     {
       title: "Pipeline Construction",
       description:
-        "At Stanchions, we have the ability to construct, repair and deliver pipelines that transport oil, natural gas, petroleum products, slurry, water, and industrial gases for government and private customers. Our Pipeline Engineering Group have the resources to provide engineering and consulting services with focus in designing, building and repairing all aspects of oil & gas pipelines.",
+        "Stanchions delivers comprehensive pipeline solutions for the transportation of oil, natural gas, petroleum products, water, and industrial gases serving both government and private sector clients. Our Pipeline Engineering Group provides specialized engineering and consulting services, focusing on the design, construction, and maintenance of all aspects of oil & gas pipeline infrastructure with uncompromising quality and safety standards.",
       icon: PipelineIcon,
       imageSrc: "/static/imgs/pipeline-construction.jpg",
     },
     {
       title: "Mechanical & Electrical Installations",
       description:
-        "We provide electrical and mechanical solutions for industrial and commercial clients in and around the country. At Stanchions, we pride ourselves on our adaptable and innovative approach which allows us to offer a wide range of solutions with our experienced and multi-skilled team of engineers.",
+        "We provide comprehensive electrical and mechanical solutions for industrial and commercial clients nationwide. At Stanchions, we excel through our adaptable and innovative approach, delivering extensive engineering solutions through our experienced, multi-skilled team of certified engineers and technical specialists.",
       icon: WrenchIcon,
       imageSrc: "/static/imgs/mechanical-electrical.jpg",
     },
     {
       title: "Location Preparation",
       description:
-        "We prepare land and swamp sites for rig operations, ensuring that they are adequately ready to achieve the required results. At Stanchions, we comprehend that site preparation is key for a successful project execution that is why our dedicated team of engineers, environmentalists, archaeologists and other experts delivers nothing but the best.",
+        "We specialize in comprehensive site preparation for land and swamp locations, ensuring optimal readiness for rig operations and project success. At Stanchions, we understand that meticulous site preparation is fundamental to successful project execution. Our dedicated team of engineers, environmental specialists, archaeologists, and technical experts consistently delivers exceptional results that exceed industry standards.",
       icon: MapIcon,
       imageSrc: "/static/imgs/location-prep.jpg",
     },
     {
       title: "Road & Civil Construction",
       description:
-        "With our industrial background and proven technical capacity, we contribute to the success of large-scale road project operations, making road projects simpler and more efficient. At Stanchions, we recognize that each road project is unique, that is why we keep innovating our approach with our world class team.",
+        "Leveraging our extensive industrial experience and proven technical capabilities, we contribute to the success of large-scale road construction projects, making complex infrastructure development simpler and more efficient. At Stanchions, we recognize that each road project presents unique challenges, driving us to continuously innovate our methodologies with our world-class engineering team.",
       icon: RoadIcon,
       imageSrc: "/static/imgs/road-construction.jpg",
     },
     {
       title: "Procurement",
       description:
-        "Our procurement strategy is based on experience and long-term relationships with in-depth understanding of both local and international markets. Our relationships with key suppliers allows us to provide the best materials and services on time and within budget limits. Stanchions procurement service expertise spans the entire global supply value chain.",
+        "Our procurement strategy is built on extensive experience and strategic long-term partnerships, coupled with deep understanding of both local and international markets. Our established relationships with key suppliers enable us to source superior materials and services on time and within budget parameters. Stanchions' procurement expertise spans the entire global supply value chain, ensuring optimal outcomes for our clients.",
       icon: ShoppingCartIcon,
       imageSrc: "/static/imgs/procurement.jpg",
     },
     {
       title: "Logistics",
       description:
-        "We own and operate our own vehicles, forklifts, cranes and other equipment which enables us to run a sophisticated logistics system to ensure that supplies and materials are adequately handled and delivered to their respective destinations using fit-for-purpose transportation medium.",
+        "We own and operate a comprehensive fleet of vehicles, forklifts, cranes, and specialized equipment, enabling us to execute sophisticated logistics operations. This ensures that supplies and materials are professionally handled and delivered to their respective destinations using appropriate, fit-for-purpose transportation solutions that meet the highest industry standards.",
       icon: TruckIcon,
       imageSrc: "/static/imgs/logistics.jpg",
     },
@@ -129,10 +129,7 @@ const ServicesContent = () => {
           Our <span className="text-red-600">Services</span>
         </h2>
         <p className="text-gray-300 max-w-3xl mx-auto">
-          Stanchions Nigeria Limited is a one-stop-shop engineering solutions
-          provider for engineering, procurement and construction services. We
-          command world class expertise in total program management, seamlessly
-          integrating required solutions and services.
+          Stanchions Nigeria Limited is a comprehensive engineering solutions provider specializing in Engineering, Procurement and Construction (EPC) services. We leverage world-class expertise in total program management, seamlessly integrating innovative solutions and technical services to deliver exceptional project outcomes.
         </p>
       </div>
 
