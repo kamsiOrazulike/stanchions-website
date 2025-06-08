@@ -51,7 +51,7 @@ export default function QHSEPolicy() {
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full z-0">
           <Image
-            src="/media/qhse.jpg"
+            src="/media/image_3.png"
             alt="QHSE Policy background"
             fill
             priority
@@ -133,7 +133,7 @@ export default function QHSEPolicy() {
             <div>
               <div className="mb-8">
                 <Image
-                  src="/media/qhse.jpg"
+                  src="/static/stock_imgs/2.png"
                   alt="QHSE at Stanchions"
                   width={600}
                   height={400}

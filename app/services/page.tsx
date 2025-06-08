@@ -37,7 +37,6 @@ export default function Services() {
   const mechanicalRef = useRef(null);
   const locationRef = useRef(null);
   const civilRef = useRef(null);
-  const procurementRef = useRef(null);
   const logisticsRef = useRef(null);
 
   useEffect(() => {
@@ -64,7 +63,6 @@ export default function Services() {
         mechanicalRef.current,
         locationRef.current,
         civilRef.current,
-        procurementRef.current,
         logisticsRef.current,
       ];
 
@@ -212,7 +210,7 @@ export default function Services() {
             <div className="service-image">
               <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/static/imgs/pipeline-construction.jpg"
+                  src="/media/image_2.png"
                   alt="Pipeline Construction"
                   fill
                   className="object-cover"
@@ -276,7 +274,7 @@ export default function Services() {
             <div className="service-image order-1 md:order-2">
               <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/static/imgs/mechanical-electrical.jpg"
+                  src="/media/image_4.png"
                   alt="Mechanical & Electrical Installations"
                   fill
                   className="object-cover"
@@ -298,7 +296,7 @@ export default function Services() {
             <div className="service-image">
               <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/static/imgs/location-prep.jpg"
+                  src="/media/upth/mar24-2.jpg"
                   alt="Location Preparation"
                   fill
                   className="object-cover"
@@ -366,7 +364,7 @@ export default function Services() {
             <div className="service-image order-1 md:order-2">
               <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/static/imgs/road-construction.jpg"
+                  src="/media/image_1.png"
                   alt="Road & Civil Construction"
                   fill
                   className="object-cover"
@@ -377,54 +375,11 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Procurement */}
-      <section
-        ref={procurementRef}
-        id="procurement"
-        className="py-20 relative z-10 bg-[#373435]"
-      >
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="service-image">
-              <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
-                <Image
-                  src="/static/imgs/procurement.jpg"
-                  alt="Procurement"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            <div className="service-content">
-              <div className="flex items-center mb-6">
-                <div className="bg-red-600/10 p-3 rounded-full mr-4">
-                  <ShoppingCart className="w-8 h-8 text-red-600" />
-                </div>
-                <h2 className="text-3xl font-bold text-white">Procurement</h2>
-              </div>
-              <p className="text-gray-300 mb-6">
-                Our procurement strategy is based on experience and long-term
-                relationships with in-depth understanding of both local and
-                international markets. Our relationships with key suppliers
-                allows us to provide the best materials and services on time and
-                within budget limits.
-              </p>
-              <p className="text-gray-300">
-                Stanchions procurement service expertise spans the entire global
-                supply value chain from sourcing, purchasing, expediting and
-                logistics to inventory control, inspection and quality
-                assurance.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Logistics */}
+      {/* Logistics & Management */}
       <section
         ref={logisticsRef}
         id="logistics"
-        className="py-20 relative z-10 bg-[#2a2728]"
+        className="py-20 relative z-10 bg-[#373435]"
       >
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -433,7 +388,9 @@ export default function Services() {
                 <div className="bg-red-600/10 p-3 rounded-full mr-4">
                   <Truck className="w-8 h-8 text-red-600" />
                 </div>
-                <h2 className="text-3xl font-bold text-white">Logistics</h2>
+                <h2 className="text-3xl font-bold text-white">
+                  Logistics & Management
+                </h2>
               </div>
               <p className="text-gray-300 mb-6">
                 We own and operate our own vehicles, forklifts, cranes and other
@@ -451,8 +408,8 @@ export default function Services() {
             <div className="service-image order-1 md:order-2">
               <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/static/imgs/logistics.jpg"
-                  alt="Logistics"
+                  src="/media/warehouse2.png"
+                  alt="Logistics & Management"
                   fill
                   className="object-cover"
                 />

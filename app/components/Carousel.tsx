@@ -12,8 +12,8 @@ interface Service {
 }
 
 const ServiceCard = ({ service }: { service: Service }) => (
-  <div className="rounded-xl overflow-hidden flex flex-col bg-[#373435] border border-gray-700 transition-all duration-300 shadow-lg h-full">
-    <div className="relative h-48 w-full bg-gray-800">
+  <div className="rounded-xl overflow-hidden flex flex-col bg-[#373435] border border-white/20 transition-all duration-300 shadow-lg h-full">
+    <div className="relative h-64 w-full bg-gray-800">
       <img
         src={service.imageSrc || "/static/stock_imgs/4.png"}
         alt={service.name}

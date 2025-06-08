@@ -173,42 +173,35 @@ export default function Home() {
       description:
         "We deliver comprehensive pipeline construction, rehabilitation, and maintenance services for oil, natural gas, petroleum products, and industrial applications. Our expertise ensures safe, efficient transportation infrastructure that meets international standards.",
       isNew: false,
-      imageSrc: "/media/pipeline-construction.jpg",
+      imageSrc: "/media/image_2.png",
     },
     {
       name: "Mechanical & Electrical Installations",
       description:
         "Our specialized engineering teams deliver comprehensive mechanical and electrical solutions for industrial and commercial applications, leveraging advanced technologies and proven methodologies to ensure optimal performance and reliability.",
       isNew: false,
-      imageSrc: "/media/mechanical-electrical.jpg",
+      imageSrc: "/media/image_4.png",
     },
     {
       name: "Location Preparation",
       description:
         "We provide comprehensive site preparation services for drilling operations across diverse terrain conditions, including swamp and land locations, ensuring optimal readiness for successful rig deployment and operations.",
       isNew: false,
-      imageSrc: "/media/location-prep.jpg",
+      imageSrc: "/media/upth/mar24-2.jpg",
     },
     {
       name: "Road & Civil Construction",
       description:
         "Drawing on our extensive industrial experience and proven technical capabilities, we deliver large-scale road and civil infrastructure projects that support critical operations and community development across Nigeria.",
       isNew: false,
-      imageSrc: "/media/road-construction.jpg",
+      imageSrc: "/media/image_1.png",
     },
     {
-      name: "Procurement",
-      description:
-        "Our strategic procurement approach leverages extensive market knowledge and established supplier relationships to deliver cost-effective sourcing solutions across local and international markets, ensuring quality and timely delivery.",
-      isNew: false,
-      imageSrc: "/media/procurement.jpg",
-    },
-    {
-      name: "Logistics",
+      name: "Logistics & Management",
       description:
         "Our comprehensive logistics capabilities include our own fleet of specialized vehicles, forklifts, cranes, and material handling equipment, ensuring secure, efficient transportation and delivery of supplies and materials to project sites.",
       isNew: false,
-      imageSrc: "/media/logistics.jpg",
+      imageSrc: "/media/warehouse2.png",
     },
   ];
 
@@ -302,12 +295,9 @@ export default function Home() {
               <h2 className="text-5xl font-bold text-white mb-6">
                 About <span className="text-red-600">Us</span>
               </h2>
-              <p className="text-gray-300 mb-6">
+              <p className="text-gray-300 mb-20">
                 Stanchions Nigeria Limited stands as a premier indigenous engineering solutions provider, delivering world-class construction and fabrication support services to Nigeria's Oil and Gas sector with unwavering commitment to excellence.
-              </p>
-              <p className="text-gray-300 mb-12">
-                Since 2006, we have cultivated an exceptional reputation through our comprehensive capabilities in pipeline construction and rehabilitation, civil and mechanical engineering services, and strategic procurement solutions. Our proven track record encompasses successful project delivery across diverse operational environments, positioning us as a trusted partner for industry leaders seeking reliable, innovative, and cost-effective engineering solutions.
-              </p>
+              </p>            
               <Link
                 href="/about-us"
                 className="border border-red-600 text-white px-8 py-3 rounded-none hover:bg-red-600 hover:border-red-600 hover:text-white transition-all duration-300 mt-4 text-base"
@@ -617,15 +607,24 @@ export default function Home() {
       {/* QHSE Section */}
       <section
         ref={qhseSectionRef}
-        className="relative py-20 bg-[#373435] px-8"
+        className="relative py-20 px-8"
+        style={{
+          backgroundImage: "url('/static/image_3.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat"
+        }}
       >
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+        {/* Background overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/70"></div>
+        
+        <div className="w-full max-w-4xl mx-auto relative z-10">
+          <div className="text-center">
             <div className="qhse-content">
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                 <span className="text-red-600">QHSE</span> Policy
               </h2>
-              <div className="prose prose-lg text-gray-300 prose-invert">
+              <div className="prose prose-lg text-gray-300 prose-invert mx-auto">
                 <p>
                   Stanchions ensures that the functions of quality management
                   exists throughout our organization to ensure that the
@@ -643,16 +642,6 @@ export default function Home() {
                   plan and perform tasks in a safe and efficient manner.
                 </p>
               </div>
-            </div>
-            <div className="qhse-image">
-              <Image
-                src="/media/qhse.jpg"
-                alt="QHSE at Stanchions"
-                width={600}
-                height={400}
-                className="w-full rounded-lg shadow-lg"
-                quality={90}
-              />
             </div>
           </div>
         </div>

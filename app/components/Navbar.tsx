@@ -39,14 +39,14 @@ const Navbar = () => {
     { name: "About Us", href: "/about-us" },
     { name: "Services", href: "/services" },
     { name: "QHSE", href: "/qhse" },
-    { name: "Projects", href: "/projects" },
+    // { name: "Projects", href: "/projects" },
   ];
 
   return (
     <nav
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#373435]/90 backdrop-blur-md border-b border-gray-800 shadow-md"
+          ? "bg-[#373435]/90 backdrop-blur-md border-b border-white/20"
           : "bg-transparent"
       }`}
     >
@@ -156,7 +156,7 @@ const Navbar = () => {
           {/* Footer with Logo Divider */}
           <div className="relative mt-auto pb-8">
             <div className="absolute -top-16 left-0 w-full flex items-center justify-center">
-              <div className="w-full border-t border-gray-700"></div>
+              <div className="w-full border-t border-white/20"></div>
               <div className="absolute bg-[#2a2728] px-4">
                 <img
                   src="/logo2.svg"
@@ -164,11 +164,6 @@ const Navbar = () => {
                   className="w-16 h-16 opacity-40"
                 />
               </div>
-            </div>
-            <div className="text-center max-w-3xl mx-auto px-4 pt-8">
-              <p className="text-gray-400 text-sm">
-                Genesis Technical Company Limited
-              </p>
             </div>
           </div>
         </div>
