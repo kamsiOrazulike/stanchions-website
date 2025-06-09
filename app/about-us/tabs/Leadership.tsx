@@ -16,7 +16,7 @@ const LeadershipContent = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {/* CEO Profile */}
         <div className="bg-[#373435] p-6 rounded-lg shadow-lg flex flex-col">
           <div className="aspect-[4/3] bg-gray-100 mb-4 relative rounded-lg overflow-hidden">
@@ -69,34 +69,6 @@ const LeadershipContent = () => {
             expertise in financial planning, cost optimization, and investment
             strategy strengthens Stanchions' financial foundation while driving
             profitability and long-term value creation.
-          </p>
-        </div>
-
-        {/* Technical Advisor Profile */}
-        <div className="bg-[#373435] p-6 rounded-lg shadow-lg flex flex-col">
-          <div className="aspect-[4/3] bg-gray-100 mb-4 relative rounded-lg overflow-hidden">
-            <img
-              src="/static/GABRIEL_ORAMASIONWU.jpg"
-              alt="GABRIEL ORAMASIONWU"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
-          <h3 className="text-xl font-bold text-white mb-2">
-            GABRIEL ORAMASIONWU
-          </h3>
-          <p className="font-bold text-sm text-red-600 mb-3">
-            CHIEF TECHNICAL ADVISOR
-          </p>
-          <p className="text-gray-300 text-sm">
-            Gabriel Oramasionwu serves as Chief Technical Advisor, bringing
-            extensive expertise in oil & gas operations, engineering excellence,
-            and strategic business development. With a proven track record in
-            project management, process optimization, and technical innovation, he
-            plays a pivotal role in enhancing Stanchions' operational efficiency
-            and service delivery standards. His comprehensive expertise in business
-            development and risk management ensures the successful execution of
-            complex projects, driving sustainable growth and maintaining our
-            position as an industry leader.
           </p>
         </div>
       </div>

@@ -1,25 +1,13 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import ScrollButton from "@/components/ScrollButton";
 import TabSystem from "@/components/TabSystem";
 import OverviewContent from "./tabs/Overview";
 import ValuesContent from "./tabs/Values";
 import LeadershipContent from "./tabs/Leadership";
-import { gsap } from "gsap";
 
 export default function About() {
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Animation for hero content fade-in
-    gsap.fromTo(
-      ".hero-content",
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.3 }
-    );
-  }, []);
-
   const tabs = [
     {
       id: "overview",
@@ -61,7 +49,7 @@ export default function About() {
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full z-0">
           <Image
-            src="/media/work-image.jpg"
+            src="/media/image_3.png"
             alt="About Stanchions background"
             fill
             priority
@@ -73,7 +61,7 @@ export default function About() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4 hero-content mt-24">
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4 mt-24">
           <Image
             src="/logo2.svg"
             alt="Stanchions Logo"
@@ -99,10 +87,7 @@ export default function About() {
       </div>
 
       {/* Content Section with Tab System */}
-      <div
-        ref={contentRef}
-        className="w-full relative z-10 bg-[#2a2728] min-h-screen pt-8"
-      >
+      <div className="w-full relative z-10 bg-[#2a2728] min-h-screen pt-8">
         <TabSystem tabs={tabs} defaultActiveTab="overview" />
       </div>
 

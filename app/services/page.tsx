@@ -1,9 +1,7 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import ScrollButton from "@/components/ScrollButton";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import {
   Wrench,
   Map,
@@ -32,82 +30,6 @@ const PipelineIcon = ({ className }: { className?: string }) => (
 );
 
 export default function Services() {
-  const introRef = useRef(null);
-  const pipelineRef = useRef(null);
-  const mechanicalRef = useRef(null);
-  const locationRef = useRef(null);
-  const civilRef = useRef(null);
-  const logisticsRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger);
-
-      gsap.fromTo(
-        ".intro-content",
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: introRef.current,
-            start: "top 80%",
-          },
-        }
-      );
-
-      const serviceSections = [
-        pipelineRef.current,
-        mechanicalRef.current,
-        locationRef.current,
-        civilRef.current,
-        logisticsRef.current,
-      ];
-
-      serviceSections.forEach((section) => {
-        if (section) {
-          const sectionElement = section as HTMLElement;
-          gsap.fromTo(
-            sectionElement.querySelector(".service-image"),
-            { opacity: 0, x: -50 },
-            {
-              opacity: 1,
-              x: 0,
-              duration: 0.8,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: section,
-                start: "top 70%",
-              },
-            }
-          );
-
-          gsap.fromTo(
-            (section as HTMLElement).querySelector(".service-content"),
-            { opacity: 0, x: 50 },
-            {
-              opacity: 1,
-              x: 0,
-              duration: 0.8,
-              delay: 0.2,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: section,
-                start: "top 70%",
-              },
-            }
-          );
-        }
-      });
-
-      return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      };
-    }
-  }, []);
-
   const scrollToNextSection = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -124,7 +46,7 @@ export default function Services() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative h-[80vh] w-full overflow-hidden">
+      <section className="relative h-[84vh] w-full overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full z-0">
           <Image
@@ -167,14 +89,14 @@ export default function Services() {
       </section>
 
       {/* Introduction Section */}
-      <section ref={introRef} className="py-20 relative z-10 bg-[#2a2728]">
+      <section className="py-20 relative z-10 bg-[#2a2728]">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="intro-content text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
               Complete{" "}
               <span className="text-red-600">Engineering Solutions</span>
             </h2>
-            <p className="text-gray-300 text-lg max-w-4xl mx-auto">
+            <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-4">
               Stanchions Nigeria Limited stands as your comprehensive engineering
               solutions partner, delivering integrated engineering, procurement,
               and construction services. Our world-class expertise encompasses
@@ -231,14 +153,10 @@ export default function Services() {
       </section>
 
       {/* Pipeline Construction */}
-      <section
-        ref={pipelineRef}
-        id="pipeline"
-        className="py-20 relative z-10 bg-[#373435]"
-      >
+      <section id="pipeline" className="py-20 relative z-10 bg-[#373435]">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="service-image">
+            <div>
               <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
                 <Image
                   src="/media/image_2.png"
@@ -248,7 +166,7 @@ export default function Services() {
                 />
               </div>
             </div>
-            <div className="service-content">
+            <div>
               <div className="flex items-center mb-6">
                 <div className="bg-red-600/10 p-3 rounded-full mr-4">
                   <PipelineIcon className="w-8 h-8 text-red-600" />
@@ -275,14 +193,10 @@ export default function Services() {
       </section>
 
       {/* Mechanical & Electrical Installations */}
-      <section
-        ref={mechanicalRef}
-        id="mechanical"
-        className="py-20 relative z-10 bg-[#2a2728]"
-      >
+      <section id="mechanical" className="py-20 relative z-10 bg-[#2a2728]">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="service-content order-2 md:order-1">
+            <div className="order-2 md:order-1">
               <div className="flex items-center mb-6">
                 <div className="bg-red-600/10 p-3 rounded-full mr-4">
                   <Wrench className="w-8 h-8 text-red-600" />
@@ -302,7 +216,7 @@ export default function Services() {
                 engineers.
               </p>
             </div>
-            <div className="service-image order-1 md:order-2">
+            <div className="order-1 md:order-2">
               <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
                 <Image
                   src="/media/image_4.png"
@@ -317,14 +231,10 @@ export default function Services() {
       </section>
 
       {/* Location Preparation */}
-      <section
-        ref={locationRef}
-        id="location"
-        className="py-20 relative z-10 bg-[#373435]"
-      >
+      <section id="location" className="py-20 relative z-10 bg-[#373435]">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="service-image">
+            <div>
               <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
                 <Image
                   src="/media/upth/mar24-2.jpg"
@@ -334,7 +244,7 @@ export default function Services() {
                 />
               </div>
             </div>
-            <div className="service-content">
+            <div>
               <div className="flex items-center mb-6">
                 <div className="bg-red-600/10 p-3 rounded-full mr-4">
                   <Map className="w-8 h-8 text-red-600" />
@@ -365,14 +275,10 @@ export default function Services() {
       </section>
 
       {/* Road & Civil Construction */}
-      <section
-        ref={civilRef}
-        id="civil"
-        className="py-20 relative z-10 bg-[#2a2728]"
-      >
+      <section id="civil" className="py-20 relative z-10 bg-[#2a2728]">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="service-content order-2 md:order-1">
+            <div className="order-2 md:order-1">
               <div className="flex items-center mb-6">
                 <div className="bg-red-600/10 p-3 rounded-full mr-4">
                   <Hammer className="w-8 h-8 text-red-600" />
@@ -392,7 +298,7 @@ export default function Services() {
                 team.
               </p>
             </div>
-            <div className="service-image order-1 md:order-2">
+            <div className="order-1 md:order-2">
               <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
                 <Image
                   src="/media/image_1.png"
@@ -407,14 +313,10 @@ export default function Services() {
       </section>
 
       {/* Logistics & Management */}
-      <section
-        ref={logisticsRef}
-        id="logistics"
-        className="py-20 relative z-10 bg-[#373435]"
-      >
+      <section id="logistics" className="py-20 relative z-10 bg-[#373435]">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="service-content order-2 md:order-1">
+            <div className="order-2 md:order-1">
               <div className="flex items-center mb-6">
                 <div className="bg-red-600/10 p-3 rounded-full mr-4">
                   <Truck className="w-8 h-8 text-red-600" />
@@ -436,7 +338,7 @@ export default function Services() {
                 available are small vehicles for lease.
               </p>
             </div>
-            <div className="service-image order-1 md:order-2">
+            <div className="order-1 md:order-2">
               <div className="relative h-80 rounded-lg overflow-hidden shadow-xl">
                 <Image
                   src="/media/warehouse2.png"

@@ -1,131 +1,10 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import ScrollButton from "@/components/ScrollButton";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Shield, Gauge, Heart, Leaf } from "lucide-react";
 
 export default function QHSEPolicy() {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const frameworkRef = useRef<HTMLDivElement>(null);
-  const pillarsRef = useRef<HTMLDivElement>(null);
-  const certificationsRef = useRef<HTMLDivElement>(null);
-  const commitmentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Animation for hero content fade-in
-      gsap.fromTo(
-        ".hero-content",
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.3 }
-      );
-
-      // Framework section animations
-      gsap.fromTo(
-        ".framework-text",
-        { opacity: 0, x: -50 },
-        {
-          scrollTrigger: {
-            trigger: frameworkRef.current,
-            start: "top 80%",
-          },
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        }
-      );
-
-      gsap.fromTo(
-        ".framework-image",
-        { opacity: 0, x: 50 },
-        {
-          scrollTrigger: {
-            trigger: frameworkRef.current,
-            start: "top 80%",
-          },
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          delay: 0.2,
-          ease: "power3.out",
-        }
-      );
-
-      // Pillars section animations
-      gsap.fromTo(
-        ".pillars-header",
-        { opacity: 0, y: 30 },
-        {
-          scrollTrigger: {
-            trigger: pillarsRef.current,
-            start: "top 80%",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        }
-      );
-
-      gsap.fromTo(
-        ".pillar-item",
-        { opacity: 0, y: 30 },
-        {
-          scrollTrigger: {
-            trigger: pillarsRef.current,
-            start: "top 70%",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.15,
-          ease: "back.out(1.7)",
-        }
-      );
-
-      // Certifications section animations
-      gsap.fromTo(
-        ".certifications-content",
-        { opacity: 0, y: 30 },
-        {
-          scrollTrigger: {
-            trigger: certificationsRef.current,
-            start: "top 80%",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        }
-      );
-
-      // Commitment section animations
-      gsap.fromTo(
-        ".commitment-content",
-        { opacity: 0, y: 30 },
-        {
-          scrollTrigger: {
-            trigger: commitmentRef.current,
-            start: "top 80%",
-          },
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        }
-      );
-
-      return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      };
-    }
-  }, []);
-
   const qhseValues = [
     {
       icon: Shield,
@@ -172,7 +51,7 @@ export default function QHSEPolicy() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4 hero-content mt-24">
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4 mt-24">
           <Image
             src="/logo2.svg"
             alt="Stanchions Logo"
@@ -198,14 +77,11 @@ export default function QHSEPolicy() {
       </div>
 
       {/* QHSE Content Section */}
-      <div
-        ref={contentRef}
-        className="w-full relative z-10 bg-[#2a2728] min-h-screen py-20"
-      >
+      <div className="w-full relative z-10 bg-[#2a2728] min-h-screen py-20">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {/* Main Content Grid */}
-          <div ref={frameworkRef} className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-            <div className="framework-text">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            <div>
               <h2 className="text-4xl font-bold text-white mb-6">
                 Our <span className="text-red-600">QHSE Framework</span>
               </h2>
@@ -239,7 +115,7 @@ export default function QHSEPolicy() {
               </div>
             </div>
 
-            <div className="framework-image">
+            <div>
               <div className="mb-8">
                 <Image
                   src="/static/stock_imgs/2.png"
@@ -265,8 +141,8 @@ export default function QHSEPolicy() {
           </div>
 
           {/* QHSE Values Grid */}
-          <div ref={pillarsRef} className="mb-16">
-            <div className="pillars-header text-center mb-12">
+          <div className="mb-16">
+            <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-4">
                 Our <span className="text-red-600">QHSE Pillars</span>
               </h2>
@@ -279,7 +155,7 @@ export default function QHSEPolicy() {
               {qhseValues.map((value, index) => (
                 <div
                   key={index}
-                  className="pillar-item bg-gradient-to-br from-[#373435] to-[#2a2728] p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-all duration-300"
+                  className="bg-gradient-to-br from-[#373435] to-[#2a2728] p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-all duration-300"
                 >
                   <div className="bg-red-600/10 p-4 rounded-full inline-block mb-4">
                     <value.icon className="w-8 h-8 text-red-600" />
@@ -292,7 +168,7 @@ export default function QHSEPolicy() {
           </div>
 
           {/* Certifications Section */}
-          <div ref={certificationsRef} className="certifications-content bg-gradient-to-r from-red-900/30 to-red-800/30 p-12 rounded-lg">
+          <div className="bg-gradient-to-r from-red-900/30 to-red-800/30 p-12 rounded-lg">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="md:w-2/3 mb-6 md:mb-0">
                 <h3 className="text-2xl font-bold mb-4 text-white">
@@ -309,8 +185,8 @@ export default function QHSEPolicy() {
           </div>
 
           {/* Policy Commitment Section */}
-          <div ref={commitmentRef} className="mt-16 text-center">
-            <div className="commitment-content">
+          <div className="mt-16 text-center">
+            <div>
               <h3 className="text-3xl font-bold text-white mb-8">
                 Our <span className="text-red-600">Commitment</span>
               </h3>
