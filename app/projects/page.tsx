@@ -48,14 +48,14 @@ const createTimelineImages = (): TimelineImage[] => {
   return [
     // Start with March 2024
     {
-      src: "/media/upth/mar24-1.JPG",
+      src: "/media/upth/mar24-1.png",
       month: "March",
       date: "2024",
       caption: "Foundation preparation",
       displayOrder: 1,
     },
     {
-      src: "/media/upth/mar24-2.JPG",
+      src: "/media/upth/mar24-2.png",
       month: "March",
       date: "2024",
       caption: "Concrete foundation work",
@@ -63,7 +63,7 @@ const createTimelineImages = (): TimelineImage[] => {
     },
     // Then April 2024
     {
-      src: "/media/upth/apr24-1.JPG",
+      src: "/media/upth/apr24-1.png",
       month: "April",
       date: "2024",
       caption: "Concrete slab installation",
@@ -71,28 +71,28 @@ const createTimelineImages = (): TimelineImage[] => {
     },
     // Then January 2024
     {
-      src: "/media/upth/jan24-1.JPG",
+      src: "/media/upth/jan24-1.png",
       month: "January",
       date: "2024",
       caption: "Initial structural framework",
       displayOrder: 4,
     },
     {
-      src: "/media/upth/jan24-2.JPG",
+      src: "/media/upth/jan24-2.png",
       month: "January",
       date: "2024",
       caption: "Framework and floor installation",
       displayOrder: 5,
     },
     {
-      src: "/media/upth/jan24-3.JPG",
+      src: "/media/upth/jan24-3.png",
       month: "January",
       date: "2024",
       caption: "Roof framework preparation",
       displayOrder: 6,
     },
     {
-      src: "/media/upth/jan24-4.JPG",
+      src: "/media/upth/jan24-4.png",
       month: "January",
       date: "2024",
       caption: "Wall framing progress",
@@ -100,14 +100,14 @@ const createTimelineImages = (): TimelineImage[] => {
     },
     // Then February 2025
     {
-      src: "/media/upth/feb25-1.JPG",
+      src: "/media/upth/feb25-1.png",
       month: "February",
       date: "2025",
       caption: "Roof installation begun",
       displayOrder: 8,
     },
     {
-      src: "/media/upth/feb25-2.JPG",
+      src: "/media/upth/feb25-2.png",
       month: "February",
       date: "2025",
       caption: "Exterior walls and roofing complete",

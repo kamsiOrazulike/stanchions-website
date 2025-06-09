@@ -187,7 +187,7 @@ export default function Home() {
       description:
         "We provide comprehensive site preparation services for drilling operations across diverse terrain conditions, including swamp and land locations, ensuring optimal readiness for successful rig deployment and operations.",
       isNew: false,
-      imageSrc: "/media/upth/mar24-2.jpg",
+      imageSrc: "/media/upth/mar24-2.png",
     },
     {
       name: "Road & Civil Construction",
@@ -609,7 +609,7 @@ export default function Home() {
         ref={qhseSectionRef}
         className="relative py-20 px-8"
         style={{
-          backgroundImage: "url('/static/image_3.png')",
+          backgroundImage: "url('/static/media/image_3.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat"
