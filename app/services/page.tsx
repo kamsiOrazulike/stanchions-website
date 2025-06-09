@@ -2,14 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import ScrollButton from "@/components/ScrollButton";
-import {
-  Wrench,
-  Map,
-  Hammer,
-  ShoppingCart,
-  Truck,
-  ChevronDown,
-} from "lucide-react";
+import { Wrench, Map, Hammer, ShoppingCart, Truck } from "lucide-react";
 
 const PipelineIcon = ({ className }: { className?: string }) => (
   <svg
@@ -30,13 +23,6 @@ const PipelineIcon = ({ className }: { className?: string }) => (
 );
 
 export default function Services() {
-  const scrollToNextSection = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <main className="relative min-h-screen bg-[#373435]">
       {/* Background Elements */}
@@ -74,17 +60,10 @@ export default function Services() {
           />
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Services</h1>
           <p className="text-md md:text-xl max-w-2xl mx-auto mb-4">
-            Premier indigenous engineering solutions delivering excellence across
-            the oil and gas sector with unwavering commitment to quality,
+            Premier indigenous engineering solutions delivering excellence
+            across the oil and gas sector with unwavering commitment to quality,
             innovation, and operational excellence.
           </p>
-          <button
-            onClick={scrollToNextSection}
-            className="animate-bounce mt-8 bg-transparent border-none text-white cursor-pointer"
-            aria-label="Scroll to content"
-          >
-            <ChevronDown size={42} />
-          </button>
         </div>
       </section>
 
@@ -97,12 +76,13 @@ export default function Services() {
               <span className="text-red-600">Engineering Solutions</span>
             </h2>
             <p className="text-gray-300 text-lg max-w-4xl mx-auto mb-4">
-              Stanchions Nigeria Limited stands as your comprehensive engineering
-              solutions partner, delivering integrated engineering, procurement,
-              and construction services. Our world-class expertise encompasses
-              total program management, seamlessly integrating innovative solutions
-              and services while upholding the highest standards of ethical
-              business practices and operational excellence.
+              Stanchions Nigeria Limited stands as your comprehensive
+              engineering solutions partner, delivering integrated engineering,
+              procurement, and construction services. Our world-class expertise
+              encompasses total program management, seamlessly integrating
+              innovative solutions and services while upholding the highest
+              standards of ethical business practices and operational
+              excellence.
             </p>
           </div>
 
@@ -356,8 +336,7 @@ export default function Services() {
       <section className="py-20 relative z-10 bg-[#373435]">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="text-3xl font-bold text-white mb-8">
-            Ready to{" "}
-            <span className="text-red-600">Work With Us?</span>
+            Ready to <span className="text-red-600">Work With Us?</span>
           </h2>
           <p className="text-gray-300 mb-10 text-lg">
             Contact our team to discuss your project requirements and discover
