@@ -151,7 +151,7 @@ export default function Services() {
             className="mb-12"
           />
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Services</h1>
-          <p className="text-sm md:text-lg mb-12">
+          <p className="text-md md:text-xl max-w-2xl mx-auto mb-4">
             Premier indigenous engineering solutions delivering excellence across
             the oil and gas sector with unwavering commitment to quality,
             innovation, and operational excellence.
