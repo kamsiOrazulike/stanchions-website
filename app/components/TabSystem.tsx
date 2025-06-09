@@ -22,7 +22,7 @@ const TabSystem: React.FC<TabSystemProps> = ({
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
     window.scrollTo({
-      top: 0,
+      top: 200,
       behavior: "smooth",
     });
   };
@@ -31,7 +31,7 @@ const TabSystem: React.FC<TabSystemProps> = ({
     <div className="relative">
       {/* Floating Pill-shaped Navbar */}
       <div className="sticky top-24 z-50 mb-8">
-        <div className="flex justify-center px-4">
+        <div className="flex justify-center px-4 max-w-3xl mx-auto w-full">
           <div className="bg-black/80 backdrop-blur-md rounded-full px-2 py-2 shadow-lg border border-white/10">
             <nav className="flex items-center" aria-label="Tabs">
               {tabs.map((tab) => (

@@ -124,11 +124,37 @@ export default function Services() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-white">
-        <div className="text-center max-w-4xl mx-auto px-4">
+      <section className="relative h-[80vh] w-full overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <Image
+            src="/media/image_3.png"
+            alt="Services background"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4 mt-24">
+          <Image
+            src="/logo2.svg"
+            alt="Stanchions Logo"
+            width={180}
+            height={100}
+            priority
+            draggable={false}
+            className="mb-12"
+          />
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Services</h1>
-          <p className="text-lg md:text-xl mb-12">
-            Premier indigenous engineering solutions delivering excellence across the oil and gas sector with unwavering commitment to quality, innovation, and operational excellence.
+          <p className="text-sm md:text-lg mb-12">
+            Premier indigenous engineering solutions delivering excellence across
+            the oil and gas sector with unwavering commitment to quality,
+            innovation, and operational excellence.
           </p>
           <button
             onClick={scrollToNextSection}
@@ -149,7 +175,12 @@ export default function Services() {
               <span className="text-red-600">Engineering Solutions</span>
             </h2>
             <p className="text-gray-300 text-lg max-w-4xl mx-auto">
-              Stanchions Nigeria Limited stands as your comprehensive engineering solutions partner, delivering integrated engineering, procurement, and construction services. Our world-class expertise encompasses total program management, seamlessly integrating innovative solutions and services while upholding the highest standards of ethical business practices and operational excellence.
+              Stanchions Nigeria Limited stands as your comprehensive engineering
+              solutions partner, delivering integrated engineering, procurement,
+              and construction services. Our world-class expertise encompasses
+              total program management, seamlessly integrating innovative solutions
+              and services while upholding the highest standards of ethical
+              business practices and operational excellence.
             </p>
           </div>
 
@@ -423,10 +454,13 @@ export default function Services() {
       <section className="py-20 relative z-10 bg-[#373435]">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="text-3xl font-bold text-white mb-8">
-            Ready to <span className="text-red-600">Work With Us?</span>
+            Ready to{" "}
+            <span className="text-red-600">Work With Us?</span>
           </h2>
           <p className="text-gray-300 mb-10 text-lg">
-            Contact our team to discuss your project requirements and discover how Stanchions can deliver world-class engineering solutions, innovative approaches, and exceptional value for your business.
+            Contact our team to discuss your project requirements and discover
+            how Stanchions can deliver world-class engineering solutions,
+            innovative approaches, and exceptional value for your business.
           </p>
           <a
             href="/contact"

@@ -47,7 +47,7 @@ export default function QHSEPolicy() {
   return (
     <main className="min-h-screen relative bg-[#373435]">
       {/* Hero Section with Background Image */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative h-[84vh] w-full overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full z-0">
           <Image

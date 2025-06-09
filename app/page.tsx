@@ -221,7 +221,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-[#373435]">
       {/* Hero Section with Video Background */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative h-[84vh] w-full overflow-hidden">
         {/* Background Video */}
         <div className="absolute inset-0 w-full h-full z-0">
             <video
@@ -284,6 +284,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Clients Section */}
+      <section
+        ref={clientsSectionRef}
+        className="relative py-2 bg-white overflow-hidden"
+      >
+        {/* Content Container */}
+        <div className="w-full mx-auto relative z-20">
+          {/* <div className="clients-header text-center mb-12">
+            <h2 className="text-5xl font-bold text-black">
+              Our <span className="text-red-600">Clients</span>
+            </h2>
+            <p className="text-gray-600 mt-4">
+              We&apos;ve had the privilege of working with leading companies in
+              the oil and gas industry
+            </p>
+          </div> */}
+          <ClientMarquee clients={clients} />
+        </div>
+      </section>
+
       {/* About Us Section */}
       <section
         ref={aboutSectionRef}
@@ -300,7 +320,7 @@ export default function Home() {
               </p>            
               <Link
                 href="/about-us"
-                className="border border-red-600 text-white px-8 py-3 rounded-none hover:bg-red-600 hover:border-red-600 hover:text-white transition-all duration-300 mt-4 text-base"
+                className=" bg-red-600 rounded-full text-white px-8 py-3 transition-all duration-300 mt-4 text-base"
               >
                 Learn More About Us
               </Link>
@@ -609,7 +629,7 @@ export default function Home() {
         ref={qhseSectionRef}
         className="relative py-20 px-8"
         style={{
-          backgroundImage: "url('/static/media/image_3.png')",
+          backgroundImage: "url('/media/image_3.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat"
@@ -644,53 +664,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Clients Section */}
-      <section
-        ref={clientsSectionRef}
-        className="relative py-20 bg-[#2a2728] overflow-hidden"
-      >
-        {/* Background elements */}
-        <div>
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: `radial-gradient(#000 2px, transparent 2px)`,
-              backgroundSize: "10px 10px",
-            }}
-          />
-          {/* Top Fade */}
-          <div
-            className="absolute top-0 left-0 right-0 h-40 z-10"
-            style={{
-              background:
-                "linear-gradient(to bottom, #2a2728 0%, transparent 100%)",
-            }}
-          />
-          {/* Bottom Fade */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-40 z-10"
-            style={{
-              background:
-                "linear-gradient(to top, #2a2728 0%, transparent 100%)",
-            }}
-          />
-        </div>
-
-        {/* Content Container */}
-        <div className="w-full max-w-7xl mx-auto px-4 relative z-20">
-          <div className="clients-header text-center mb-12">
-            <h2 className="text-5xl font-bold text-white">
-              Our <span className="text-red-600">Clients</span>
-            </h2>
-            <p className="text-gray-300 mt-4">
-              We&apos;ve had the privilege of working with leading companies in
-              the oil and gas industry
-            </p>
-          </div>
-          <ClientMarquee clients={clients} />
         </div>
       </section>
 

@@ -4,7 +4,7 @@ import { Eye, Target, Shield, Users, RotateCcw } from "lucide-react";
 const ValuesContent = () => {
   return (
     <div className="p-6 md:p-10 text-white">
-      <div className="mb-16">
+      <div>
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-6">
             Vision Mission <span className="text-red-600">Values</span>
